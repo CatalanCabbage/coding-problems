@@ -18,3 +18,7 @@ Coding problems attempted from Leetcode
    //So if you want to check if a + b > c where a and b are positive, 
    do (a + b > c || a + b < 0) to handle overflow
    ```
+   
+### Hall of common-bug-fame:
+* Remember to declare method arguments with datatype
+* `Map` does not have `contains`, use `containsKey`
