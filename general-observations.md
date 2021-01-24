@@ -7,7 +7,7 @@ Coding problems attempted from Leetcode
 `String` to `int` : `Integer.parseInt(str) //Primitive types can't use toString()` 
 <br>`char[]` to `String` : `new String(char[])`
 
-`int` to `String` : `String.valueOf(int)`
+`int` to `String` : `String.valueOf(int)`  
 `int` to `BigInteger` : `BigInteger.valueOf(int)`. Cannot be cast directly!
 
 ### General edge-cases:
