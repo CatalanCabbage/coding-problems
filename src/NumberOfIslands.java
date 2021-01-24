@@ -10,12 +10,48 @@ import java.util.Set;
 
 /**
  * Problem: https://leetcode.com/problems/number-of-islands/
+ * Solution explanation link: https://leetcode.com/problems/number-of-islands/discuss/56359/Very-concise-Java-AC-solution/57905
  * Given a 2d grid map of '1's (land) and '0's (water), count the number of islands.
  * An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically.
  * You may assume all four edges of the grid are all surrounded by water.
  * 7.65%, 5.12%
  */
 public class NumberOfIslands {
+    int cols = 0, rows = 0;
+    char[][] grid;
+    
+    public int numIslands(char[][] grid) {
+        int numberOfIslands = 0;
+        this.grid = grid;
+        cols = grid[0].length;
+        rows = grid.length;
+        
+        for(int i = 0; i < rows; i++) {
+            for(int j = 0; j < cols; j++) {
+                if (grid[i][j] == '1') {
+                    groupIslandsTogether(i, j);
+                    numberOfIslands++;
+                }
+            }
+        }
+        return numberOfIslands;
+    }
+    
+    //Change all connected islands(1) to water(0)
+    private void groupIslandsTogether(int i, int j) {
+        if (i < 0 || i >= rows || j < 0 || j >= cols || grid[i][j] == '0') {
+            return;
+        }
+        grid[i][j] = '0';
+        groupIslandsTogether(i + 1, j);
+        groupIslandsTogether(i - 1, j);
+        groupIslandsTogether(i, j + 1);
+        groupIslandsTogether(i, j - 1);
+    }
+    
+    
+    /*
+    //Old solution - uses union-find
     public static void main(String[] args) {
         NumberOfIslands islands = new NumberOfIslands();
         int[][] inputArr = {{0, 0, 0, 0},
@@ -124,4 +160,5 @@ public class NumberOfIslands {
             }
         }
     }
+    */
 }
