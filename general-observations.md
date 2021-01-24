@@ -8,6 +8,7 @@ Coding problems attempted from Leetcode
 <br>`char[]` to `String` : `new String(char[])`
 
 `int` to `String` : `String.valueOf(int)`
+`int` to `BigInteger` : `BigInteger.valueOf(int)`. Cannot be cast directly!
 
 ### General edge-cases:
 `int`: 
