@@ -7,12 +7,13 @@
  * Statement: You are given two non-empty linked lists representing two non-negative integers.
  * The digits are stored in reverse order, and each of their nodes contains a single digit. 
  * Add the two numbers and return the sum as a linked list.
- * Discussions soln ref: https://leetcode.com/problems/lru-cache/discuss/45911/Java-Hashtable-+-Double-linked-list-(with-a-touch-of-pseudo-nodes)/249529
+ * Eg: Input: [2,4,3], [5,6,4] and Output: [7,0,8]
+ * Discussions soln ref: https://leetcode.com/problems/add-two-numbers/discuss/1010/Is-this-Algorithm-optimal-or-what/1539
  * 
  * Solution: 
- * Store key-Node mapping in a HashMap. 
- * When a key is accessed, move corresponding Node to the head of a linkedList<Node>.
- * To eject least recently used value - remove tail of LinkedList and remove corresponding key from HashMap.
+ * Similar to normal addition - since numbers are reversed, just add - if more than 10, carry 1 over.
+ * Keep going till numbers in both lists are done and no remainder is left.
+ * Time: O(max(l1.len, l2.len))
  */
  
  
@@ -24,7 +25,7 @@ class AddTwoNumbers {
         ListNode result = new ListNode(0, null);
         ListNode resultHead = result;
         while (!(remainder == 0 && node1 == null && node2 == null)) {
-        //Get both values
+            //Get both values
             int num1 = node1 == null? 0 : node1.val;
             int num2 = node2 == null? 0 : node2.val;
             
