@@ -25,47 +25,38 @@
  */
 class ReverseLinkedList2 {
     public ListNode reverseBetween(ListNode head, int left, int right) {
-        if (head == null || head.next == null) {
+        if (head == null) {
             return head;
         }
-
-        ListNode headRef = head;
-        int currentNode = 1;
-        ListNode prev = null;
-        while (currentNode < left) {
-            prev = head;
-            head = head.next;
-            currentNode++;
+        
+        //Always use a dummy to return in the end. 
+        //Saves you a lot of pain and null handling
+        ListNode dummy = new ListNode(0, head);
+        ListNode prev = dummy;
+        for (int i = 1; i < left; i++) {
+            prev = prev.next;
         }
-        //At this point, head == left
-        //prev is the left edge
+        
         ListNode leftEdge = prev;
 
         //Move prev to the first node to be reversed
-        prev = head;
-        head = head.next;
-        currentNode++;
+        prev = prev.next;
+        head = prev.next;
 
         //prev is the first node now
         ListNode rightRevEdge = prev;
 
         //Reverse till right edge is reached. In the end, head is rightEdge.
-        while (currentNode <= right) {
+        for (int i = 0; i < right - left; i++) {
             ListNode next = head.next;
             head.next = prev;
             prev = head;
             head = next;
-            currentNode++;
         }
 
-        //When `left == 1` - `left` is the first element, there is no unchanged left list.
-        //So `prev` is the head, similar to a normal reversed linked list
-        if(leftEdge != null) {
-            leftEdge.next = prev;
-        } else {
-            headRef = prev;
-        }
-        rightRevEdge.next = head;        
-        return headRef;
+        leftEdge.next = prev;
+        rightRevEdge.next = head;
+        
+        return dummy.next;
     }
 }
