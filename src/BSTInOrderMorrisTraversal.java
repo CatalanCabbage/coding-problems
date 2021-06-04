@@ -23,7 +23,7 @@
  */
 class BSTInOrderMorrisTraversal {
     List<Integer> list = new LinkedList<>();
-    public List<Integer> inorderTraversal(TreeNode root) {
+    public List<Integer> inorderTraversalCommented(TreeNode root) {
         if (root == null) {
             return list;
         }
@@ -56,6 +56,40 @@ class BSTInOrderMorrisTraversal {
                 }                
             }
         }
+        return list;
+    }
+    
+    //Clean implementation
+    public List<Integer> inorderTraversal(TreeNode root) {
+        if (root == null) {
+            return list;
+        }
+        
+        TreeNode current = root;
+        while (current != null) {
+            //If left is null, take current and move right
+            if (current.left == null) {
+                list.add(current.val);
+                current = current.right;
+            } else {
+                TreeNode prev = current.left;
+                //Take the largest node of left sub-tree (which is the rightmost node of the left sub-tree)
+                while (prev.right != null && prev.right != current) {
+                    prev = prev.right;
+                }
+                //If prev.right is null, it means it hasn't been visited yet
+                if (prev.right == null) {
+                    prev.right = current;
+                    current = current.left;
+                } else if (prev.right == current) {
+                    //If prev.right points to current, it means we're at the rightmost point.
+                    //Remove the link and add the current node
+                    list.add(current.val);
+                    prev.right = null;
+                    current = current.right;
+                }
+            }
+         }
         return list;
     }
 }
