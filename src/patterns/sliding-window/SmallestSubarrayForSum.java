@@ -11,8 +11,25 @@
  */
 
 class SmallestSubarrayForSum {
-  public static int findMinSubArray(int S, int[] arr) {
-    // TODO: Write your code here
-    return 0;
+    public static int findMinSubArray(int S, int[] arr) {
+    int minSize = Integer.MAX_VALUE;
+    int right = 0;
+    int left = 0;
+    int currentSum = 0;
+    while(right<arr.length && left<arr.length) {
+      //Each time, add an element on the right to the current sum
+      currentSum += arr[right];
+      right++;
+      //Remove all left elements such that current sum is still >= our target
+      //This will give us the smallest possible window
+      while(left<right && currentSum - arr[left] >= S) {
+        currentSum = currentSum - arr[left];
+        left++;
+      } 
+      if (right - left < minSize && currentSum >= S) {
+        minSize = right - left;
+      }
+     } 
+    return minSize;
   }
 }
