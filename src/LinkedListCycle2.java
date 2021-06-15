@@ -1,6 +1,6 @@
 /**
  * Problem: 
- * Given head, the head of a linked list, determine if the linked list has a cycle in it.
+ * Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
  * 
  * Solution: Floyd's cycle detection algorithm
  * https://cs.stackexchange.com/questions/10360/floyds-cycle-detection-algorithm-determining-the-starting-point-of-cycle/
