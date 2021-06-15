@@ -5,7 +5,7 @@
  * Solution: Floyd's cycle detection algorithm
  * https://cs.stackexchange.com/questions/10360/floyds-cycle-detection-algorithm-determining-the-starting-point-of-cycle/
  *
- * Link: https://leetcode.com/problems/linked-list-cycle/
+ * Link: https://leetcode.com/problems/linked-list-cycle-ii/
  */
 
 /**
