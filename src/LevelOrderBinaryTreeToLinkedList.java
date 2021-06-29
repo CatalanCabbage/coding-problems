@@ -1,19 +1,24 @@
 /**
- * Problem: 
+ * Problem:
  * Given a binary tree root, convert it to a singly linked list using level order traversal.
- * 
+ * <p>
  * Link: https://binarysearch.com/problems/Level-Order-Binary-Tree-to-Linked-List
  */
 
 
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * public class Tree {
- *   int val;
- *   Tree left;
- *   Tree right;
+ * int val;
+ * Tree left;
+ * Tree right;
+ * }
+ * <p>
+ * class LLNode {
+ * int val;
+ * LLNode next;
  * }
  */
 

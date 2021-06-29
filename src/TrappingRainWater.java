@@ -9,7 +9,7 @@
  */
 public class TrappingRainWater {
     public static void main(String[] args) {
-        int[] heights = {4,2,0,3,2,5};
+        int[] heights = {4, 2, 0, 3, 2, 5};
         int trapped = new TrappingRainWater().trap(heights);
         System.out.println(trapped);
     }

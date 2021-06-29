@@ -1,17 +1,17 @@
 /**
- * Problem: 
- * You are given a list of integers nums of length n representing the current score of swimmers in a competition. 
+ * Problem:
+ * You are given a list of integers nums of length n representing the current score of swimmers in a competition.
  * There is one more round to swim and the first place winner for this round gets n points, second place n-1 points, etc. and the last place gets 1 point.
  * Return the number of swimmers that can still win the competition after the last round. If you tie for first in points, this still counts as winning.
- *
+ * <p>
  * Link: https://binarysearch.com/problems/Win-After-Last-Round
- *
- * Solution: 
- * 1. Find the lowest possible winning score (threshold). 
- * 2. Count the number of people who can equal or exceed that threshold if placed first. 
+ * <p>
+ * Solution:
+ * 1. Find the lowest possible winning score (threshold).
+ * 2. Count the number of people who can equal or exceed that threshold if placed first.
  */
 
-import java.util.*;
+import java.util.Arrays;
 
 class WinAfterLastRound {
     public int solve(int[] nums) {

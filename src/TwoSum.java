@@ -52,10 +52,9 @@ public class TwoSum {
         int requiredNum;
         for (int i = 0; i < numbers.length; i++) {
             requiredNum = target - numbers[i];
-            if(map.containsKey(requiredNum)) {
+            if (map.containsKey(requiredNum)) {
                 return new int[]{i, map.get(requiredNum)};
-            }
-            else {
+            } else {
                 map.put(numbers[i], i);
             }
         }

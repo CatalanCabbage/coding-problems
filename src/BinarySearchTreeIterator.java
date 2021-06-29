@@ -1,22 +1,18 @@
 /**
- * Problem: 
+ * Problem:
  * Implement a binary search tree iterator with the following methods:
  * next() - returns the next smallest element in the tree
  * hasnext() - returns whether there is a next element in the iterator
- *
+ * <p>
  * Link: https://binarysearch.com/problems/Binary-Search-Tree-Iterator
  */
 
-import java.util.*;
+import java.util.LinkedList;
 
-/**
- * public class Tree {
- *   int val;
- *   Tree left;
- *   Tree right;
- * }
- */
+
 class BinarySearchTreeIterator {
+    private LinkedList<Integer> list = new LinkedList<>();
+
     public BinarySearchTreeIterator(Tree root) {
         populateList(root);
     }
@@ -31,7 +27,6 @@ class BinarySearchTreeIterator {
         return (list.peek() != null);
     }
 
-    private LinkedList<Integer> list = new LinkedList<>();
     private void populateList(Tree node) {
         if (node == null) {
             return;
@@ -43,6 +38,11 @@ class BinarySearchTreeIterator {
         if (node.right != null) {
             populateList(node.right);
         }
-        
+    }
+
+    public class Tree {
+        int val;
+        Tree left;
+        Tree right;
     }
 }

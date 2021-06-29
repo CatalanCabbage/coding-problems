@@ -1,7 +1,7 @@
 /**
- * Problem: 
+ * Problem:
  * Given head, the head of a linked list, determine if the linked list has a cycle in it.
- * 
+ * <p>
  * Solution: Floyd's cycle detection algorithm
  * Link: https://leetcode.com/problems/linked-list-cycle/
  */
@@ -9,15 +9,15 @@
 /**
  * Definition for singly-linked list.
  * class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
+ * int val;
+ * ListNode next;
+ * ListNode(int x) {
+ * val = x;
+ * next = null;
+ * }
  * }
  */
-public class Solution {
+public class LinkedListCycle {
     public boolean hasCycle(ListNode head) {
         if (head == null) {
             return false;
@@ -32,5 +32,15 @@ public class Solution {
             }
         }
         return false;
+    }
+
+    class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+            next = null;
+        }
     }
 }

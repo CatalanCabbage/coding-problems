@@ -1,9 +1,27 @@
 /**
- * Problem: 
- * Given the head of a singly linked list and two integers left and right where left <= right, 
+ * Problem:
+ * Given the head of a singly linked list and two integers left and right where left <= right,
  * reverse the nodes of the list from position left to position right, and return the reversed list.
- * 
+ * <p>
  * Link: https://leetcode.com/problems/reverse-linked-list-ii/
+ * <p>
+ * Definition for singly-linked list.
+ * public class ListNode {
+ * int val;
+ * ListNode next;
+ * ListNode() {}
+ * ListNode(int val) { this.val = val; }
+ * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ * <p>
+ * Definition for singly-linked list.
+ * public class ListNode {
+ * int val;
+ * ListNode next;
+ * ListNode() {}
+ * ListNode(int val) { this.val = val; }
+ * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
  */
 
 /**
@@ -28,7 +46,7 @@ class ReverseLinkedList2 {
         if (head == null) {
             return head;
         }
-        
+
         //Always use a dummy to return in the end. 
         //Saves you a lot of pain and null handling
         ListNode dummy = new ListNode(0, head);
@@ -36,7 +54,7 @@ class ReverseLinkedList2 {
         for (int i = 1; i < left; i++) {
             prev = prev.next;
         }
-        
+
         ListNode leftEdge = prev;
 
         //Move prev to the first node to be reversed
@@ -56,7 +74,7 @@ class ReverseLinkedList2 {
 
         leftEdge.next = prev;
         rightRevEdge.next = head;
-        
+
         return dummy.next;
     }
 }

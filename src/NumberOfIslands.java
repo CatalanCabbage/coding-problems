@@ -2,12 +2,6 @@
  * @author Davis Jeffrey
  */
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
 /**
  * Problem: https://leetcode.com/problems/number-of-islands/
  * Solution explanation link: https://leetcode.com/problems/number-of-islands/discuss/56359/Very-concise-Java-AC-solution/57905
@@ -19,15 +13,15 @@ import java.util.Set;
 public class NumberOfIslands {
     int cols = 0, rows = 0;
     char[][] grid;
-    
+
     public int numIslands(char[][] grid) {
         int numberOfIslands = 0;
         this.grid = grid;
         cols = grid[0].length;
         rows = grid.length;
-        
-        for(int i = 0; i < rows; i++) {
-            for(int j = 0; j < cols; j++) {
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
                 if (grid[i][j] == '1') {
                     groupIslandsTogether(i, j);
                     numberOfIslands++;
@@ -36,7 +30,7 @@ public class NumberOfIslands {
         }
         return numberOfIslands;
     }
-    
+
     //Change all connected islands(1) to water(0)
     private void groupIslandsTogether(int i, int j) {
         if (i < 0 || i >= rows || j < 0 || j >= cols || grid[i][j] == '0') {

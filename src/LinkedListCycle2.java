@@ -1,22 +1,22 @@
 /**
- * Problem: 
+ * Problem:
  * Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
- * 
+ * <p>
  * Solution: Floyd's cycle detection algorithm
  * https://cs.stackexchange.com/questions/10360/floyds-cycle-detection-algorithm-determining-the-starting-point-of-cycle/
- *
+ * <p>
  * Link: https://leetcode.com/problems/linked-list-cycle-ii/
  */
 
 /**
  * Definition for singly-linked list.
  * class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
+ * int val;
+ * ListNode next;
+ * ListNode(int x) {
+ * val = x;
+ * next = null;
+ * }
  * }
  */
 public class LinkedListCycle2 {
@@ -41,7 +41,7 @@ public class LinkedListCycle2 {
         if (pointer2 == null || pointer2.next == null) {
             return null;
         }
-        
+
         //Start pointer1 from the beginning, pointer2 from meeting point.
         //Both will meet at the beginning of the list.
         pointer1 = head;
