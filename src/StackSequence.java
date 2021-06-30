@@ -8,7 +8,7 @@
 import java.util.Stack;
 
 class StackSequence {
-    private solveIteratively(int[] pushes, int[] pops) {
+    private boolean solveIteratively(int[] pushes, int[] pops) {
         Stack<Integer> stack = new Stack<>();
         int p = 0;
         //Greedily pop whatever is possible

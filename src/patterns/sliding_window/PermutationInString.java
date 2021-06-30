@@ -14,7 +14,6 @@ import java.util.Map;
  */
 
 class PermutationInString {
-    //Check the next method for comments
     public boolean checkInclusion(String s1, String str) {
         if (s1.length() > str.length()) {
             return false;
