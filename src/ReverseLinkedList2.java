@@ -47,7 +47,7 @@ class ReverseLinkedList2 {
             return head;
         }
 
-        //Always use a dummy to return in the end. 
+        //Always use a dummy to return in the end.
         //Saves you a lot of pain and null handling
         ListNode dummy = new ListNode(0, head);
         ListNode prev = dummy;
@@ -76,5 +76,13 @@ class ReverseLinkedList2 {
         rightRevEdge.next = head;
 
         return dummy.next;
+    }
+
+    public class ListNode {
+        int val;
+        ListNode next;
+        ListNode() {}
+        ListNode(int val) { this.val = val; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 }
