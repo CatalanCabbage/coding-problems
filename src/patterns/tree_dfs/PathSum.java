@@ -1,49 +1,54 @@
-package patterns.sliding_window;
+package patterns.tree_dfs;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Given a string, find the length of the longest substring in it with no more than K distinct characters.
- * <p>
- * Eg: Input: String="araaci", K=2
- * Output: 4 //The longest substring with no more than '2' distinct characters is "araa".
+ * Given the root of a binary tree and an integer targetSum,
+ * return true if the tree has a root-to-leaf path such that adding up all the values along the path equals targetSum.
+ * A leaf is a node with no children.
+ *
+ * Eg: Input: root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22
+ * Output: true
+ *
+ * Link: https://leetcode.com/problems/path-sum/
  */
 
-class LongestDistinctSubstring {
-    public static int findLength(String str, int k) {
-        if (str == null || str.length() == 0) {
-            return 0;
+class PathSum {
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode() {}
+        TreeNode(int val) { this.val = val; }
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
         }
-        int left = -1;
-        int right = -1;
-        int longestLength = 0;
-        int distinctChars = 0; //We can use HashMap's length too
-        Map<Character, Integer> charsMap = new HashMap<>();
-        //We use a hashMap to store chars that are there in the current window.
-        while (right < str.length() - 1) {
-            right++;
-            char rightChar = str.charAt(right);
-            if (charsMap.containsKey(rightChar)) {
-                charsMap.put(rightChar, charsMap.get(rightChar) + 1);
-            } else {
-                distinctChars++;
-                charsMap.put(rightChar, 1);
-            }
-            while (distinctChars > k && left < right) {
-                left++;
-                char leftChar = str.charAt(left);
-                //If the Map has a value > 1, it means that another occurrence of the same char is
-                //present somewhere else in the String too; so distinctChars stays the same.
-                if (charsMap.get(leftChar) > 1) {
-                    charsMap.put(leftChar, charsMap.get(leftChar) - 1);
-                } else {
-                    distinctChars--;
-                    charsMap.remove(leftChar);
-                }
-            }
-            longestLength = (right - left) > longestLength ? (right - left) : longestLength;
+    }
+    public boolean hasPathSum(TreeNode root, int targetSum) {
+        if (root == null) {
+            return false;
         }
-        return longestLength;
+
+        return doesPathReachSum(root, targetSum, 0);
+    }
+
+    private boolean doesPathReachSum(TreeNode node, int targetSum, int currentSum) {
+        if (node == null) {
+            return false;
+        }
+        //Check if this is leaf and the sum is reached
+        currentSum += node.val;
+        if (node.left == null && node.right == null) {
+            return currentSum == targetSum;
+        }
+
+        //If left or right paths have a valid sum, return true
+        boolean doesPathReachSum = false;
+        doesPathReachSum = doesPathReachSum(node.left, targetSum, currentSum) || doesPathReachSum(node.right, targetSum, currentSum);
+
+        return doesPathReachSum;
     }
 }
