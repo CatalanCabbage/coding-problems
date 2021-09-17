@@ -4,12 +4,14 @@
 package patterns.reverse_linkedlist;
 
 /**
- * Given a linked list, swap every two adjacent nodes and return its head.
+ * Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
+ * k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes, in the end, should remain as it is.
+ * You may not alter the values in the list's nodes, only nodes themselves may be changed.
  *
- * Eg: Input: head = [1,2,3,4]
- * Output: [2,1,4,3]
+ * Eg: Input: head = [1,2,3,4,5], k = 2
+ * Output: [2,1,4,3,5]
  *
- * Link: https://leetcode.com/problems/swap-nodes-in-pairs/
+ * Link: https://leetcode.com/problems/reverse-nodes-in-k-group/
  */
 
 public class ReverseNodesInKGroup {
@@ -19,40 +21,50 @@ public class ReverseNodesInKGroup {
         ListNode() {}
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-  }
+    }
 
-    private static ListNode swapPairs(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-        ListNode dummy = head;
-        ListNode prev = head;
-        head = head.next;
+    private static ListNode reverseNodes(ListNode head, int k) {
+        ListNode dummy = new ListNode(0, head);
+        ListNode leftEdge = dummy;
+        ListNode firstNode = head;
 
-        while (head != null) {
-            ListNode next = head.next;
+        while (areElementsPresent(head, k)) {
+            ListNode prev = head;
+            head = head.next;
+            firstNode = prev;
 
-            //|  Next pair (next, next.next)  | Previous pair (prev.next) should point to: |
-            //| (null, null)| null |
-            //| (1, null)   |   1  |
-            //| (1, 2)      |   2  |
-            prev.next = next == null ? null : next.next == null ? next : next.next;
-
-            head.next = prev;
-            if (next == null || next.next == null) {
-                break;
+            for(int i = 1; i < k; i++) {
+                ListNode next = head.next;
+                head.next = prev;
+                prev = head;
+                head = next;
             }
-            prev = next;
-            head = next.next;
+            leftEdge.next = prev;
+            firstNode.next = head;
+            leftEdge = firstNode;
         }
-        return dummy;
+
+        return dummy.next;
+    }
+
+    private static boolean areElementsPresent(ListNode head, int k) {
+        System.out.println("Head is " + head.val);
+        for (int i = 0; i < k; i++) {
+            if (head == null) {
+                return false;
+            }
+            head = head.next;
+        }
+        return true;
     }
 
     public static void main(String[] args) {
-        swapPairs(
+        reverseNodes(
             new ListNode(1,
                 new ListNode(2,
                         new ListNode(3,
-                                new ListNode(4, null)))));
+                                new ListNode(4,
+                                        new ListNode(5, null))))),
+                2);
     }
 }

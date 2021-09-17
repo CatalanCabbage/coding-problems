@@ -4,55 +4,64 @@
 package patterns.reverse_linkedlist;
 
 /**
- * Given a linked list, swap every two adjacent nodes and return its head.
+ * Given the head of a linked list, rotate the list to the right by k places.
  *
- * Eg: Input: head = [1,2,3,4]
- * Output: [2,1,4,3]
+ * Eg: Input: head = [1,2,3,4,5], k = 2
+ * Output: [4,5,1,2,3]
  *
- * Link: https://leetcode.com/problems/swap-nodes-in-pairs/
+ * Link: https://leetcode.com/problems/rotate-list/
  */
 
 public class RotateList {
-    private static class ListNode {
+    public ListNode rotateRight(ListNode head, int k) {
+        if (head == null) {
+            return head;
+        }
+
+        ListNode dummy = new ListNode(0, head);
+        ListNode initialFirst = dummy.next;
+
+        int length = 0;
+        while (head != null) {
+            System.out.println("Head: " + head.val);
+            head = head.next;
+            length++;
+        }
+
+        int rotations = k % length;
+        System.out.println("Length: " + length);
+        if (rotations == 0) {
+            return dummy.next;
+        }
+        int newHeadIndex = length - rotations;
+        System.out.println("HeadIndex: " + newHeadIndex);
+
+        head = dummy.next;
+        System.out.println("head: " + head.val);
+        //Find (n-1)th node
+        for (int i = 0; i < newHeadIndex - 1; i++) {
+            //Move to next
+            head = head.next;
+        }
+
+        System.out.println("Found the divide: " + head.val);
+        ListNode newStart = head.next;
+        head.next = null;
+
+        head = newStart;
+        while (head.next != null) {
+            head = head.next;
+        }
+        head.next = initialFirst;
+
+        return newStart;
+    }
+
+    public class ListNode {
         int val;
         ListNode next;
         ListNode() {}
         ListNode(int val) { this.val = val; }
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-  }
-
-    private static ListNode swapPairs(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-        ListNode dummy = head;
-        ListNode prev = head;
-        head = head.next;
-
-        while (head != null) {
-            ListNode next = head.next;
-
-            //|  Next pair (next, next.next)  | Previous pair (prev.next) should point to: |
-            //| (null, null)| null |
-            //| (1, null)   |   1  |
-            //| (1, 2)      |   2  |
-            prev.next = next == null ? null : next.next == null ? next : next.next;
-
-            head.next = prev;
-            if (next == null || next.next == null) {
-                break;
-            }
-            prev = next;
-            head = next.next;
-        }
-        return dummy;
-    }
-
-    public static void main(String[] args) {
-        swapPairs(
-            new ListNode(1,
-                new ListNode(2,
-                        new ListNode(3,
-                                new ListNode(4, null)))));
     }
 }
