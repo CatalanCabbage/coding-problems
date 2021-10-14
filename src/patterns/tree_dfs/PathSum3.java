@@ -1,7 +1,9 @@
 package patterns.tree_dfs;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Given the root of a binary tree and an integer targetSum, return the number of paths where the sum of the values along the path equals targetSum.

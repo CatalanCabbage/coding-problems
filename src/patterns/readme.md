@@ -58,3 +58,18 @@ Basic algorithm:
 ---
 
 ## Linked List
+```
+Basically know to:
+- Use fast/slow pointer
+- Find cyclic list
+- Find point where cycle starts
+```
+
+## Tree DFS
+>...tree has a root-to-leaf path...
+
+```
+Basic algorithm:
+- Recursively call left and right children
+- If needed, pass values up the nodes (bubbling)
+```
