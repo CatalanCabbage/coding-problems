@@ -65,4 +65,15 @@ class LevelOrderBinaryTreeToLinkedList {
         }
         return head.next;
     }
+
+    class LLNode {
+        int val;
+        LLNode next;
+    }
+
+    public class Tree {
+        int val;
+        Tree left;
+        Tree right;
+    }
 }

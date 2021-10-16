@@ -37,4 +37,9 @@ class LinkedListJumps {
         }
         return node;
     }
+
+    class LLNode {
+        int val;
+        LLNode next;
+    }
 }

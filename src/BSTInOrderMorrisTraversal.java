@@ -6,6 +6,9 @@
  * Eg input: [30,20,40,10,25,35,45,9,null,null,26,null,null,null,null]
  */
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -91,5 +94,18 @@ class BSTInOrderMorrisTraversal {
             }
         }
         return list;
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode() {}
+        TreeNode(int val) { this.val = val; }
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
     }
 }
