@@ -55,7 +55,6 @@ public class Ipo {
         //Min-heap of capital
         PriorityQueue<Integer> minCapital = new PriorityQueue<>(capitalComparator);
 
-
         for (int i = 0; i < capital.length; i++) {
             minCapital.add(i);
         }

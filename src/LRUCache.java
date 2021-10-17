@@ -2,6 +2,8 @@
  * @author Davis Jeffrey
  */
 
+import java.util.HashMap;
+
 /**
  * Problem: https://leetcode.com/problems/lru-cache/
  * Statement: Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
