@@ -73,3 +73,13 @@ Basic algorithm:
 - Recursively call left and right children
 - If needed, pass values up the nodes (bubbling)
 ```
+
+## Two Heaps
+> Given a list, find median
+```
+Basic algorithm:
+- Maintain 2 heaps, one maxHeap and one minHeap
+- maxHeap contains first half of list, minHeap contains second half
+- Insert elements while maintaining invariant
+- Once done, compute median from top of heaps
+```
