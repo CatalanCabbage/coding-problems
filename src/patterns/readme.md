@@ -76,6 +76,7 @@ Basic algorithm:
 
 ## Two Heaps
 > Given a list, find median
+> Or a problem where max of an object is related to min of that object
 ```
 Basic algorithm:
 - Maintain 2 heaps, one maxHeap and one minHeap
@@ -83,3 +84,5 @@ Basic algorithm:
 - Insert elements while maintaining invariant
 - Once done, compute median from top of heaps
 ```
+
+## Subsets
