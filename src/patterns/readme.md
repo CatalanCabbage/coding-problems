@@ -86,3 +86,19 @@ Basic algorithm:
 ```
 
 ## Subsets
+> Permutations, combinations, subsets, knock yourself out  
+```
+Basic methods:
+#1: Death by recursion
+- Sort the incoming array in case it has duplicates
+- For each entry: 
+    - Add element to a temp list 
+    - Add that list to solutions 
+    - Recurse
+    - Remove last element (so that alternate paths can be explored)
+
+#2: Clone (for subsets)
+- Add empty list to solution
+- Clone all entries in solution, add current element to clones
+- Do this for all entries
+```
