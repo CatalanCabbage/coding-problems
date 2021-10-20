@@ -8,10 +8,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Given an integer array nums of unique elements, return all possible subsets (the power set).
- * The solution set must not contain duplicate subsets. Return the solution in any order.
+ * Given an array nums of distinct integers, return all the possible permutations.
+ * You can return the answer in any order.
  *
- * Link: https://leetcode.com/problems/subsets/
+ * Eg. Input: nums = [1,2,3]
+ * Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+ * 
+ * Link: https://leetcode.com/problems/permutations/
  */
 
 public class Permutations {
