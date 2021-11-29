@@ -102,3 +102,16 @@ Basic methods:
 - Clone all entries in solution, add current element to clones
 - Do this for all entries
 ```
+
+## Binary search
+```
+Base rules:
+- Condition: while(lo <= hi)
+- Calc mid:  mid = lo + (hi - lo) / 2
+- if (target > nums[mid]) lo = mid + 1
+- if (target < nums[mid]) hi = mid - 1
+
+Changing any of the above must be double-checked, or might end up in an infinite-loop.
+```
+
+## Bitwise XOR
