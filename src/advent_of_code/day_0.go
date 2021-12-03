@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	runDay1()
+	//runDay1()
 	runDay2()
 }
 

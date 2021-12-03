@@ -22,11 +22,13 @@ func runDay1() {
 		input = append(input, num)
 	}
 
-	partOne(input)
-	partTwo(input)
+	fmt.Println("----------------Day 1----------------")
+	day1v1(input)
+	day1v2(input)
+	fmt.Println("-------------------------------------")
 }
 
-func partOne(input []int) {
+func day1v1(input []int) {
 	depthIncreases := 0
 	prevNum := math.MaxInt //So that first entry isn't counted
 
@@ -40,7 +42,7 @@ func partOne(input []int) {
 	fmt.Println("Depth increases: ", depthIncreases)
 }
 
-func partTwo(input []int) {
+func day1v2(input []int) {
 	depthIncreases := 0
 	for i := 2; i < len(input)-1; i++ {
 		leftmostElement := input[i-2]
