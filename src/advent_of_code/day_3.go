@@ -7,6 +7,8 @@
 //oxygen rating: determine the most common value in that position across all inputs, keep only those inputs
 //do this for all positions till only 1 is left
 //CO2 rating: similar, but least common value.
+//
+//https://adventofcode.com/2021/day/3
 package main
 
 import (
@@ -18,7 +20,7 @@ import (
 func runDay3() {
 	inputStr := getSliceFromFile("day_3.txt")
 
-	fmt.Println("----------------Day 1----------------")
+	fmt.Println("----------------Day 3----------------")
 	day3v1(inputStr)
 	day3v2(inputStr)
 	fmt.Println("-------------------------------------")
@@ -29,6 +31,9 @@ func day3v1(inputStr []string) {
 	gamma := ""
 	epsilon := ""
 
+	//Which appears more, '1's or '0's?
+	//If it's '0', number--. If it's '1', number++.
+	//So in the end, if number is negative, it means there were more 0s and vice versa.
 	for _, num := range inputStr {
 		for i, digitChar := range num {
 			if digitChar == '0' {
