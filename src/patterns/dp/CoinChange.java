@@ -3,6 +3,21 @@
  */
 package patterns.dp;
 
+/**
+ * You are given an integer array coins representing coins of different denominations
+ * and an integer amount representing a total amount of money.
+ * Return the fewest number of coins that you need to make up that amount.
+ * If that amount of money cannot be made up by any combination of the coins, return -1.
+ *
+ * You may assume that you have an infinite number of each kind of coin.
+ *
+ * Link: https://leetcode.com/problems/coin-change
+ *
+ * There are 3 ways values returned are determined, need to get this intuition:
+ * 1. If currentCoin > coins.length, it fails with Integer.MAX_VALUE
+ * 2. If amountNeeded is 0, success - return 0
+ * 3. Take currentCoin into account, find the minCoins for remainder, return that (minCoins + 1)
+ */
 
 public class CoinChange {
     static int minCoins = Integer.MAX_VALUE;
@@ -10,11 +25,6 @@ public class CoinChange {
 
     //Returns min coins needed
     private static int findMinCoins(int[] coins, int amountNeeded, int currentCoin) {
-        //There are 3 ways values returned are determined, need to get this intuition:
-        //1. If currentCoin > coins.length, it fails with Integer.MAX_VALUE
-        //2. If amountNeeded is 0, success - return 0
-        //3. Take currentCoin into account, find the minCoins for remainder, return that (minCoins + 1)
-
         if (currentCoin >= coins.length) {
             return Integer.MAX_VALUE;
         }
