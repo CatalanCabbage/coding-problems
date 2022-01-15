@@ -115,3 +115,15 @@ Changing any of the above must be double-checked, or might end up in an infinite
 ```
 
 ## Bitwise XOR
+`n ^ n = 0`
+
+## DP - Unbounded Knapsack
+Given values of `n` items, put these items in a knapsack with a capacity `c`.  
+Goal can be to get the max values, use minimum items, etc.  
+We are allowed to use an infinite number of each item.  
+```
+- Decide base cases
+- One recursion path taking current element into account
+- One recursion path without taking current element into account
+- Memoize return values of recursive function 
+```
