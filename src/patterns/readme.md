@@ -127,3 +127,10 @@ We are allowed to use an infinite number of each item.
 - One recursion path without taking current element into account
 - Memoize return values of recursive function 
 ```
+
+# ...Stuff
+- Counter can be used to keep track of final result array size, etc.
+- Don't forget Math.max() or Math.min() for results where needed
+- Check base cases! 
+- For each constraint (`if (a < x && b > y)`), check in which cases those constraints will be applicable to avoid redundancy.  
+- Memoize when possible. Eg: If we need to find the max on the right side of an array, don't calculate everytime. (Ref: BestTimeToBuyAndSellStock)

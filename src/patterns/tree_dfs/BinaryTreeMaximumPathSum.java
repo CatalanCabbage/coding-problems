@@ -44,6 +44,27 @@ class BinaryTreeMaximumPathSum {
         return currentMaxPath + root.val;
     }
 
+    //If modifying the tree is fine
+    //Post-order traversal. Cleck left, check right, add them up and calculate total path
+    private void getMaxPathSum(TreeNode root) {
+        if (root.left != null) {
+            getMaxPathSum(root.left);
+        }
+        if (root.right != null) {
+            getMaxPathSum(root.right);
+        }
+
+        //If any path < 0, ignore it
+        int leftVal = root.left == null ? 0 : Math.max(0, root.left.val);
+        int rightVal = root.right == null ? 0 : Math.max(0, root.right.val);
+
+        //Sum is left + right + root.val
+        maxSum = Math.max(maxSum, (leftVal + rightVal + root.val));
+
+        //Current root's val: root.val + left or right
+        root.val = Math.max(leftVal, rightVal) + root.val;
+    }
+
     public class TreeNode {
         int val;
         TreeNode left;

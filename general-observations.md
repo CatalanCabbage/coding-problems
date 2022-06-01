@@ -10,6 +10,10 @@ Coding problems attempted from Leetcode
 `int` to `String` : `String.valueOf(int)`  
 `int` to `BigInteger` : `BigInteger.valueOf(int)`. Cannot be cast directly!
 
+`char` to `int` : `'c' - '0' //'0' to a number gives the ascii digit` 
+
+Sort array with custom comparators: `Arrays.sort(points, (a, b) -> Integer.compare(a[0], b[0]);`
+
 ### General edge-cases:
 `int`: 
  * negative numbers
@@ -23,3 +27,6 @@ Coding problems attempted from Leetcode
 ### Hall of common-bug-fame:
 * Remember to declare method arguments with datatype
 * `Map` does not have `contains`, use `containsKey`
+
+## Collections
+### Queues
