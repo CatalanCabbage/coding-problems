@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Test;
  * Open brackets must be closed in the correct order.
  *
  * Link: https://leetcode.com/problems/valid-parentheses/
+ * Times: 2
+ * Rating: 3
  */
 
 

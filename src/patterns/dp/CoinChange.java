@@ -17,6 +17,9 @@ package patterns.dp;
  * 1. If currentCoin > coins.length, it fails with Integer.MAX_VALUE
  * 2. If amountNeeded is 0, success - return 0
  * 3. Take currentCoin into account, find the minCoins for remainder, return that (minCoins + 1)
+ *
+ * Times: 2
+ * Rating: 0
  */
 
 public class CoinChange {

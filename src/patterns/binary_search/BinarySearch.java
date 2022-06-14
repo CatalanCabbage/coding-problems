@@ -3,10 +3,6 @@
  */
 package patterns.binary_search;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-
 /**
  * Given an array of integers nums which is sorted in ascending order, and an integer target,
  * write a function to search target in nums. If target exists, then return its index.
@@ -15,6 +11,9 @@ import java.util.List;
  * You must write an algorithm with O(log n) runtime complexity.
  *
  * Link: https://leetcode.com/problems/binary-search/
+ *
+ * Times: 3
+ * Rating: 5
  */
 
 public class BinarySearch {

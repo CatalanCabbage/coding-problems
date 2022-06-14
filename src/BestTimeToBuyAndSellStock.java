@@ -14,6 +14,8 @@
  * Eg: Input: prices = [7,1,5,3,6,4] and Output: 5
  * Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
  *
+ * Times: 2
+ * Rating: 4
  */
 
 
@@ -38,6 +40,19 @@ class BestTimeToBuyAndSellStock {
         for (int i = 0; i < prices.length - 1; i++) {
             int currentProfit = maxFuturePrice[i + 1] - prices[i];
             maxProfit = Math.max(maxProfit, currentProfit);
+        }
+        return maxProfit;
+    }
+
+    //Better solution.
+    //Find lowest price till now. Try selling everyday. Take max profit.
+    public int maxProfit2(int[] prices) {
+        int lowestPrice = Integer.MAX_VALUE;
+        int maxProfit = Integer.MIN_VALUE;
+
+        for (int i = 0; i < prices.length; i++) {
+            lowestPrice = Math.min(lowestPrice, prices[i]);
+            maxProfit = Math.max(maxProfit, prices[i] - lowestPrice);
         }
         return maxProfit;
     }

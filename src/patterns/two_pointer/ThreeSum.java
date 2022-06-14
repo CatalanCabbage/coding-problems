@@ -15,6 +15,9 @@ import java.util.List;
  * Notice that the solution set must not contain duplicate triplets.
  *
  * Link: https://leetcode.com/problems/3sum/
+ *
+ * Times: 2
+ * Rating: 0
  */
 
 public class ThreeSum {
@@ -58,5 +61,45 @@ public class ThreeSum {
                 p2--;
             }
         }
+    }
+
+    //----------------
+    public List<List<Integer>> threeSum2(int[] nums) {
+        List<List<Integer>> solution = new ArrayList<>();
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; i++) {
+            solution.addAll(getTwoSum2(nums, i));
+            //Bug 1: Didn't add this. We need to take the first occurrance and skip the remaining to prevent dulicates.
+            while (i < nums.length - 1 && nums[i] == nums[i + 1]) {
+                i++;
+            }
+        }
+        return solution;
+    }
+
+    private List<List<Integer>> getTwoSum2(int[] nums, int index) {
+        List<List<Integer>> solution = new ArrayList<>();
+        int requiredSum = - nums[index];
+        int lo = index + 1; //Bug 2: Forgot "+ 1"
+        int hi = nums.length - 1;
+        while (lo < hi) {
+            if (nums[lo] + nums[hi] < requiredSum) {
+                lo++;
+            } else if (nums[lo] + nums[hi] > requiredSum) {
+                hi--;
+            } else {
+                solution.add(Arrays.asList(nums[index], nums[lo], nums[hi]));
+                //To avoid duplicates
+                while (lo < nums.length - 1 && nums[lo] == nums[lo + 1]) {
+                    lo++;
+                }
+                while (hi > 0 && nums[hi] == nums[hi - 1]) {
+                    hi--;
+                }
+                lo--;
+                hi--;
+            }
+        }
+        return solution;
     }
 }

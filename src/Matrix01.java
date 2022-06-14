@@ -8,6 +8,8 @@ import java.util.Queue;
  *
  * Link: https://leetcode.com/problems/01-matrix/
  *
+ * Times: 2
+ * Rating: 0 (aka fkn pathetic)
  * Eg: Input: mat = [[0,0,0],[0,1,0],[0,0,0]]
  * Output: [[0,0,0],[0,1,0],[0,0,0]]
  */

@@ -12,6 +12,9 @@ import java.util.Queue;
  * Output: [[3],[9,20],[15,7]]
  *
  * Link: https://leetcode.com/problems/binary-tree-level-order-traversal/
+ *
+ * Times: 2
+ * Rating: 5
  */
 class BinaryTreeLevelOrderTraversal {
     private static class TreeNode {

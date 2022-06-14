@@ -43,4 +43,26 @@ class FloodFill {
         }
         return image;
     }
+
+    //Trial #2: Directions array
+    public void floodFill2(int[][] image, int row, int col, int newColor, int oldColor) {
+        //General bounds checks
+        if (row < 0 || row >= image.length || col < 0 || col >= image[row].length) {
+            return;
+        }
+
+        //App-specific checks
+        if (image[row][col] != oldColor || newColor == oldColor) {
+            return;
+        }
+
+        image[row][col] = newColor;
+
+        int[][] directions = new int[][] {
+            {0, 1}, {1, 0}, {-1, 0}, {0, -1}
+        };
+        for (int i = 0; i < directions.length; i++) {
+            floodFill2(image, row + directions[i][0], col + directions[i][1], newColor, oldColor);
+        }
+    }
 }
