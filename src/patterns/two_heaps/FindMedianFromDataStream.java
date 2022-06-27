@@ -21,6 +21,9 @@ import java.util.PriorityQueue;
  * double findMedian() returns the median of all elements so far. Answers within 10-5 of the actual answer will be accepted.
  *
  * Link: https://leetcode.com/problems/find-median-from-data-stream/
+ *
+ * Times: 2
+ * Rating: 4
  */
 
 public class FindMedianFromDataStream {
