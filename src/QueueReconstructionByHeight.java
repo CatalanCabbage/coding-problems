@@ -23,7 +23,7 @@ import org.junit.jupiter.api.Test;
  * Rating: 2
  */
 
-
+//https://leetcode.com/problems/queue-reconstruction-by-height/discuss/167308/Python-solution
 class QueueReconstructionByHeight {
     public static int[][] reconstructQueue(int[][] people) {
         //Sort by decreasing height, ascending people in front
@@ -48,9 +48,9 @@ class QueueReconstructionByHeight {
 
     public static void main(String[] args) {
         int[][] res = reconstructQueue(new int[][]{{7,0},{4,4},{7,1},{5,0},{6,1},{5,2}});
-         for(int i = 0; i < res.length; i++) {
-             System.out.print("[" + res[i][0] + "," + res[i][1] + "], ");
-         }
+        for(int i = 0; i < res.length; i++) {
+            System.out.print("[" + res[i][0] + "," + res[i][1] + "], ");
+        }
         System.out.println();
         System.out.println("Expected [[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]]");
     }
