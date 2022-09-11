@@ -1,5 +1,3 @@
-package freqq;
-
 import java.util.ArrayDeque;
 
 /**

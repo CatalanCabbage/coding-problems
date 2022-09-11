@@ -1,5 +1,10 @@
 package patterns.sliding_window;
 
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
+
 /**
  * You are given an array of integers nums, there is a sliding window of size k,
  * which is moving from the very left of the array to the very right.
@@ -9,39 +14,19 @@ package patterns.sliding_window;
  * Eg: Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
  * Output: [3,3,5,5,6,7] (3 is highest in [1,3,-1], 3 is highest in [3,-1,3], etc)
  * <p>
- * Link: https://leetcode.com/problems/find-all-anagrams-in-a-string/
+ * Link: https://leetcode.com/problems/sliding-window-maximum/
+ * //https://leetcode.com/problems/sliding-window-maximum/discuss/871317/Clear-thinking-process-with-PICTURE-brute-force-to-mono-deque-pythonjavajavascript
  */
 
 class SlidingWindowMaximum {
+    //nums = [1,3,0,-1,-3,5,3,2,1,6,7], k = 3
+    //[3,3,5,5,6,7]
+    //0 0 0 3
     public int[] maxSlidingWindow(int[] nums, int k) {
-        int left = 0;
-        int right = 0;
-        int[] solution = new int[nums.length - k + 1];
-        int currentIndex = 0;
-        int currentMaxIndex = 0;
-        int currentMax = Integer.MIN_VALUE;
+        int[] solution = new int[nums.length - k];
+        //Monotonically increasing stack.
+        //When elements leave, remove them from the beginning
 
-        while (right < k) {
-            if (nums[right] > currentMax) {
-                currentMax = nums[right];
-                currentMaxIndex = right;
-            }
-            right++;
-        }
-        nums[currentIndex] = currentMax;
-        currentIndex++;
-
-        while (right < nums.length) {
-            if (left <= currentMaxIndex) {
-                if (nums[right] < nums[currentMaxIndex]) {
-                    solution[currentIndex] = nums[currentMaxIndex];
-                } else {
-                    //Check left
-
-                    //Check left + 1
-                }
-            }
-        }
         return solution;
     }
 }

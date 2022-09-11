@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 /**
  * Problem:
  * Given an array of integers heights representing the histogram's bar height
@@ -14,7 +16,25 @@ class LargestRectangleInHistogram {
 
     //https://leetcode.com/problems/largest-rectangle-in-histogram/discuss/28900/Short-and-Clean-O(n)-stack-based-JAVA-solution/213800
     public int largestRectangleAreaStack(int[] heights) {
-        return 0;
+        int len = heights.length;
+        int maxArea = 0;
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i <= len;) {
+            int h = (i == len ? 0 : heights[i]); //So that last element is popped in the end
+            //If current height is more than stack-top, push
+            if (stack.isEmpty() || h >= heights[stack.peek()]) {
+                stack.push(i);
+                i++;
+            } else {
+                //If current height is less than stack-top, pop.
+                int curHeight = heights[stack.pop()];
+                int rightBoundary = i;
+                int leftBoundary = stack.isEmpty() ? 0 : stack.peek() + 1;
+                int width = rightBoundary - leftBoundary;
+                maxArea = Math.max(maxArea, (curHeight * width));
+            }
+        }
+        return maxArea;
     }
 
     //https://leetcode.com/problems/largest-rectangle-in-histogram/discuss/28902/5ms-O(n)-Java-solution-explained-(beats-96)

@@ -50,6 +50,7 @@ public class ThreeSum {
             if (sum == target) {
                 solnList.add(Arrays.asList(nums[n], nums[p1], nums[p2]));
                 //So that we don't end up with duplicates
+                //Bug: Should put this while loop inside this and not outside!
                 while (p1 < p2 && nums[p1] == nums[p1 + 1]) p1++;
                 while (p1 < p2 && nums[p2] == nums[p2 - 1]) p2--;
                 p1++;
