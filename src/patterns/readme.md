@@ -134,3 +134,27 @@ We are allowed to use an infinite number of each item.
 - Check base cases! 
 - For each constraint (`if (a < x && b > y)`), check in which cases those constraints will be applicable to avoid redundancy.  
 - Memoize when possible. Eg: If we need to find the max on the right side of an array, don't calculate everytime. (Ref: BestTimeToBuyAndSellStock)
+
+## Finding palindromes
+To check if a given sequence can be rearranged into a palindrome:  
+Check if there are 2x of every char. If total length is odd, there can be 1 unique char.  
+To make this easier:  
+```java
+Set<Character> charsSet = new HashSet<>();
+//As we encounter each element
+for (char c : characters) {
+    //If already present in set, remove it since it forms a pair.
+    //If not, it's unique, add it to the set.
+    if (charsSet.contains(c)) {
+        charsSet.remove(c);
+    } else {
+        charsSet.add(c);
+    }
+}
+
+//Case 1: total size is odd, there needs to be a unique element.
+//In this case, set will contain only 1 element.
+//Case 2: total size is even, no unique elements.
+return characters.length % 2 == charsSet.size();
+```
+Reference: `PseudoPalindromicPathsInABinaryTree.java`
