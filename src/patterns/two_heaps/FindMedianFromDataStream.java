@@ -27,49 +27,37 @@ import java.util.PriorityQueue;
  */
 
 public class FindMedianFromDataStream {
+    //Idea is that maxHeap has first half of inputs, minHeap has second half.
+    //Invariant: maxHeap.size() = minHeap.size() || minHeap.size() + 1
+
+    //Note: Size comparison can be replaced with a boolean flag
     PriorityQueue<Integer> minHeap;
     PriorityQueue<Integer> maxHeap;
-    private boolean isEven = true;
-
-    private FindMedianFromDataStream() {
-        //Contains second half of list
+    public MedianFinder() {
         minHeap = new PriorityQueue<>();
-        //Contains first half of list
-        maxHeap = new PriorityQueue<>(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o1 < o2 ? 1 : o1 == o2 ? 0 : -1;
-            }
-        });
+        maxHeap = new PriorityQueue<>((a, b) -> Integer.compare(b, a));
     }
 
-    //Second poll() is done to maintain the invariant (maxHeap < mid < minHeap)
-    private void addNum(int num) {
-        if (isEven) {
-            maxHeap.add(num);
-            minHeap.add(maxHeap.poll());
+    public void addNum(int num) {
+        if (maxHeap.size() == minHeap.size() + 1) {
+            maxHeap.offer(num);
+            //Put in minHeap because maxHeap is greater
+            minHeap.offer(maxHeap.poll());
+            //System.out.println(minHeap);
         } else {
-            minHeap.add(num);
-            maxHeap.add(minHeap.poll());
+            minHeap.offer(num);
+            //Put in maxHeap
+            maxHeap.offer(minHeap.poll());
+            //System.out.println(maxHeap);
         }
-        isEven = !isEven;
     }
 
-    private double findMedian() {
-        if (isEven) {
-            //Do /2 separately to prevent overflow
+    public double findMedian() {
+        if (maxHeap.size() > minHeap.size()) {
+            return maxHeap.peek();
+        } else {
+            //Bug: Did /2 instead of /2.0
             return (minHeap.peek() / 2.0) + (maxHeap.peek() / 2.0);
-        } else {
-            return minHeap.peek();
         }
-    }
-
-    public static void main(String[] args) {
-        FindMedianFromDataStream fm = new FindMedianFromDataStream();
-        fm.addNum(1);
-        fm.addNum(2);
-        System.out.println(fm.findMedian());
-        fm.addNum(3);
-        System.out.println(fm.findMedian());
     }
 }

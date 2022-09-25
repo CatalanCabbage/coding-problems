@@ -63,3 +63,44 @@ public class CourseSchedule {
         return count == numCourses;
     }
 }
+
+/*
+ * boolean[][] hasEdge = new boolean[numCourses][numCourses];
+        int[] indegrees = new int[numCourses];
+
+        //Go through all prerequisites, add edges and indegrees as needed
+        for(int i = 0; i < prerequisites.length; i++) {
+            int preCourse = prerequisites[i][1];
+            int mainCourse = prerequisites[i][0];
+
+            if (!hasEdge[preCourse][mainCourse]) {
+                indegrees[mainCourse]++;
+            }
+            hasEdge[preCourse][mainCourse] = true;
+        }
+
+        //Put all nodes with no indegrees in the queue
+        Queue<Integer> freeNodes = new ArrayDeque<>();
+        for (int i = 0; i < indegrees.length; i++) {
+            if (indegrees[i] == 0) {
+                freeNodes.offer(i);
+            }
+        }
+
+        int count = 0;
+        while (!freeNodes.isEmpty()) {
+            count++;
+            int currentCourse = freeNodes.poll();
+            for (int i = 0; i < numCourses; i++) {
+                if (hasEdge[currentCourse][i]) {
+                    hasEdge[currentCourse][i] = false;
+                    indegrees[i]--;
+                    if (indegrees[i] == 0) {
+                        freeNodes.offer(i);
+                    }
+                }
+            }
+        }
+        return count == numCourses;
+    }
+ */

@@ -134,6 +134,7 @@ We are allowed to use an infinite number of each item.
 - Check base cases! 
 - For each constraint (`if (a < x && b > y)`), check in which cases those constraints will be applicable to avoid redundancy.  
 - Memoize when possible. Eg: If we need to find the max on the right side of an array, don't calculate everytime. (Ref: BestTimeToBuyAndSellStock)
+- Always use `a % 2 != 0` to find odd numbers - `a % 2 == 1` won't work for negative numbers.
 
 ## Finding palindromes
 To check if a given sequence can be rearranged into a palindrome:  
