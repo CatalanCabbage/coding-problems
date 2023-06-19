@@ -159,3 +159,125 @@ for (char c : characters) {
 return characters.length % 2 == charsSet.size();
 ```
 Reference: `PseudoPalindromicPathsInABinaryTree.java`
+
+-----
+
+# Design patterns
+## Creational
+### Singleton
+One object common for all
+
+### Factory
+Generate objects depending on the requirement  
+Eg: DC/MDM API Factory Provider
+
+### AbstractFactory
+???
+
+### Builder
+Add props as needed.  
+Eg: Streams where you can call `.map()` `.filter()` etc repeatedly.
+
+### Prototype
+Avoids the overhead of object creation and initialization by cloning a common object for new requests.  
+Eg: `User` object creation involves getting roles, personalization settings etc. We can create one per user and keep it.  
+If a new `DCUser` is needed, we clone `User` and add whatever extra needs to be added to make it `DCUser`.
+
+
+## Structural
+### Adapter
+Change object of one type to another.  
+Eg: Convert array into `List`, `Set` etc
+
+### Composite
+Treat all child objects the same as parent  
+Eg: Flutter components or HTML structure, like nodes in a tree.  
+Ever node is a part of the tree but can be considered a tree in itself too individually.
+
+### Proxy
+Provides a surrogate or placeholder for a real image.  
+Eg: Like we do for Cached objects, checking DB only if the cached image is `null`.
+
+### Flyweight
+Like a factory for objects when storing them separately each time might be expensive.  
+Eg: Fonts where we need to store data for each character.  
+We generate an object for each letter and store it. The class will then return a cached object instead.  
+
+### Decorator
+Takes an object and adds more data to that object.  
+Eg: `BufferedReader(new FileReader(filePath)))` where `BufferedReader` "decorates" `FileReader`
+
+## Behavioral
+### Template
+Abstract class provides a skeleton, concrete class provides an implemetation.  
+Eg: Interfaces
+
+### Mediator
+Sits in the middle of communication, encapsulating objects.
+
+### Chain of responsibility
+Decouples sender from receiver. A handler holds references to the order of concrete handlers to be invoked, someone handles it in the end.  
+Eg: Tomcat filters
+
+### Observer
+Similar to chain of responsibility, but many listeners do their own changes.  
+There's one main object and observers are notified when changes happen.  
+Eg: Listeners
+
+### Strategy
+An interface or abstract class defines a set of methods indicating algorithmic flows.  
+During runtime, the optimal implementation is chosen.  
+Eg: Maybe hashing algo when FIPS is enabled vs disabled
+
+### Command
+Encapsulates the request with an object that has necessary actions.  
+Consumer doesn't need to know actions, they can just call `execute()` or something.
+
+### State
+Allows behavior to change dynamically based on state.
+
+### Memento
+Allows objects to capture and rollback to different states.
+
+-----
+# DB normalization forms:  
+Why?  
+- Prevent read anomalies (due to lack of a single source of truth)
+- Prevent update anomalies (same as above)
+- Prevent delete anomalies (same as above)
+- Accuracy
+- Reduce storage space
+- Run queries fast
+
+## 1NF
+There shouldn't be duplicate rows.  
+There should be a primary key.
+
+## 2NF
+Value of each column should be dependent on the PK.  
+Eg: in `user_id, user_name, user_location, user_location_address`, location and address don't depend directly on the PK.  
+Make it a separate table and use FKs or a mapping table.
+
+## 3NF
+Has no transitive functional dependency. ie., everything should depend directly on the PK.  
+Eg: `user_id, user_name, user_location, user_zip` - `user_zip` depends on `user_location` which depends on `user_id`.    
+So `user_zip` can be moved to a separate table.  
+
+## 4NF
+There should be no multi-valued dependency.  
+Eg: `Restaurant 	Pizza Variety 	Delivery Area` - Variety doesn't depend on Area. Store them separately.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
