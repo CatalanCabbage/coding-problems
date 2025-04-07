@@ -52,6 +52,25 @@
 # @lc code=start
 class Solution:
     def validMountainArray(self, arr: list[int]) -> bool:
+        i = 1
+
+        # keep going as long as it ascends
+        while (i < len(arr) and arr[i] > arr[i - 1]):
+            i += 1
+
+        # if index is 1 or last, not a mountain
+        if i == 1 or i == len(arr):
+            return False
+
+        # keep going as long as it descends
+        while (i < len(arr) and arr[i] < arr[i - 1]):
+            i += 1
+
+        # have we reached the end?
+        return i == len(arr)
+
+
+    def validMountainArray2(self, arr: list[int]) -> bool:
         # should have at least 3 vals
         if len(arr) < 3:
             return False
