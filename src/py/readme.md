@@ -16,4 +16,8 @@ if not min_val: # wrong! will be triggered when min_val is 0 as well
     print("no vals present")
 
 
+
+# gotcha, dict contains check
+some_dict.get(key) # fails if key is 0
+key in some_dict # better
 ```
